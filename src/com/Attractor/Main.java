@@ -3,6 +3,15 @@ package com.Attractor;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	run();
+    }
+
+    private static void run() {
+//        Movie movie = new Movie();
+        Movie[] movies = FileService.readFile();
+        for(Movie m : movies) {
+            System.out.println(m);
+        }
+
     }
 }
