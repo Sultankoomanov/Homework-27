@@ -9,18 +9,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
 public class FileService {
+
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final Path path = Paths.get("./movies.json");
 
-    public static Movie[] readFile(){
+    public static Example readFile(){
+
         String json;
         try {
             json = Files.readString(path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return gson.fromJson(json, Movie[].class);
+        return gson.fromJson(json, Example.class);
     }
 
     public static void writeFile(Movie[] tracks){
@@ -34,4 +37,5 @@ public class FileService {
         }
     }
 }
+
 

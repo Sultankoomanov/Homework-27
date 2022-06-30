@@ -12,6 +12,11 @@ public class Example {
     @Expose
     private List<Movie> movies = null;
 
+    public Example(List<Movie> movies)  {
+        super();
+        this.movies = movies;
+    }
+
     public List<Movie> getMovies() {
         return movies;
     }
@@ -19,5 +24,32 @@ public class Example {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Example.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append("movies");
+        sb.append('=');
+        sb.append(((this.movies == null)?"<null>":this.movies));
+        sb.append(',');
+        if (sb.charAt((sb.length()- 1)) == ',') {
+            sb.setCharAt((sb.length()- 1), ']');
+        } else {
+            sb.append(']');
+        }
+        return sb.toString();
+    }
+
+
+
+//    @Override
+//    public int compareTo(Example o) {
+//        if(this.getMovies().equals(o.getMovies())) {
+//            return this.getMovies().compareTo(o.getMovies());
+//        }
+//        return 0;
+//    }
+
 
 }
