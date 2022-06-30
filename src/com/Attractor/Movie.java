@@ -57,8 +57,9 @@ public class Movie implements Comparable<Movie>{
         this.description = description;
     }
 
-    public Director getDirector() {
-        return director;
+    public String getDirector() {
+
+        return director.getFullName();
     }
 
     public void setDirector(Director director) {

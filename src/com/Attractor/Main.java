@@ -44,16 +44,16 @@ public class Main {
             System.out.println(m.getName());
         }
 
-//        Comparator<Movie> comp2 = Comparator.comparing(Movie::getDirector);
-//        movies.sort(comp2);
-//        System.out.println();
-//        for (Movie m : movies) {
-//            System.out.println(m.getDirector().getFullName());
-//        }
+        Comparator<Movie> comp2 = Comparator.comparing(Movie::getDirector);
+        movies.sort(comp2);
+        System.out.println();
+        for (Movie m : movies) {
+            System.out.println(m.getDirector());
+        }
 
     }
 
-    
+
 
 
 
