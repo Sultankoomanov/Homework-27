@@ -1,38 +1,62 @@
 package com.Attractor;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import java.io.FileReader;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 	run();
-
-
-
     }
 
     private static void run() {
-        Example data = FileService.readFile();
+        Map<String, List<Movie>> movieList = FileService.readFile();
+        List<Movie> movies = movieList.get("movies");
 
-        System.out.println("Year  |   Name");
-        System.out.println("----------------------------------------------");
+        start1(movies);
+        start(movies);
 
-        for (Movie m : data.getMovies()) {
-
-            Comparator comp = Comparator.comparing(Movie::getName);
-
-            System.out.println(String.format("%s  |\t %s ", m.getYear(), m.getName()));
-
-//            System.out.println(m.getName().contains("Good omens"));
-
-        }
-        
     }
+    public static void start1 (List<Movie> movies) {
+        Comparator<Movie> comp = Comparator.comparingInt(Movie::getYear);
+        movies.sort(comp);
+        for (Movie m : movies) {
+            System.out.println(m.getName());
+        }
+    }
+
+    public static void start(List<Movie> movies) {
+        Comparator<Movie> comp = Comparator.comparingInt(Movie::getYear);
+        movies.sort(comp);
+        System.out.println();
+        for (Movie m : movies) {
+            System.out.println(m.getYear() + " " +m.getName());
+        }
+        System.out.println();
+        movies.sort(comp.reversed());
+        for (Movie m : movies) {
+            System.out.println(m.getYear() + " " +m.getName());
+        }
+
+        Comparator<Movie> comp1 = Comparator.comparing(Movie::getName);
+        movies.sort(comp1);
+        System.out.println();
+        for (Movie m : movies) {
+            System.out.println(m.getName());
+        }
+
+//        Comparator<Movie> comp2 = Comparator.comparing(Movie::getDirector);
+//        movies.sort(comp2);
+//        System.out.println();
+//        for (Movie m : movies) {
+//            System.out.println(m.getDirector().getFullName());
+//        }
+
+    }
+
+    
+
+
+
 
 
 }
